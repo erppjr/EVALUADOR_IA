@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluador IA - M4-S26</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <aside>
+        <h1><span>⚡</span> AI Diagnostik</h1>
+        <nav id="sidebar-nav">
+            <div class="nav-item active" data-target="intro">Introducción</div>
+            <div class="nav-item" data-target="datos">Datos del Caso</div>
+            <div class="nav-item" data-target="calculos">Cálculos IA</div>
+            <div class="nav-item" data-target="matriz">Matriz Comparativa</div>
+            <div class="nav-item" data-target="raid">Mini-RAID</div>
+            <div class="nav-item" data-target="decision">Decisión Final</div>
+            <div class="nav-item" data-target="exportar">Exportar Resumen</div>
+        </nav>
+    </aside>
+
+    <main>
+        <div class="alert-privacy">
+            ⚠️ <strong>Importante:</strong> No introduzca datos personales reales ni información confidencial. Esta herramienta funciona localmente en su navegador.
+        </div>
+
+        <!-- Introducción -->
+        <section id="intro" class="active">
+            <h2>Bienvenido</h2>
+            <div class="card">
+                <p>Esta herramienta está diseñada para analizar la viabilidad técnica y económica de la integración de IA Generativa en servicios de atención al cliente.</p>
+                <p style="margin-top: 1rem; color: var(--text-muted);">Siga los pasos navegando por el menú lateral para completar su diagnóstico.</p>
+            </div>
+        </section>
+
+        <!-- Datos del Caso -->
+        <section id="datos">
+            <h2>Entrada de Datos</h2>
+            <div class="card">
+                <div class="grid-inputs">
+                    <div class="input-group">
+                        <label>Tickets Mensuales</label>
+                        <input type="number" id="tickets_mensuales" value="12000">
+                    </div>
+                    <div class="input-group">
+                        <label>Consultas IA por Ticket</label>
+                        <input type="number" id="consultas_por_ticket" value="2">
+                    </div>
+                    <div class="input-group">
+                        <label>Tokens Entrada / Consulta</label>
+                        <input type="number" id="tokens_entrada" value="2500">
+                    </div>
+                    <div class="input-group">
+                        <label>Tokens Salida / Consulta</label>
+                        <input type="number" id="tokens_salida" value="600">
+                    </div>
+                    <div class="input-group">
+                        <label>Tiempo actual/ticket (min)</label>
+                        <input type="number" id="tiempo_actual" value="12">
+                    </div>
+                    <div class="input-group">
+                        <label>Tiempo esperado IA (min)</label>
+                        <input type="number" id="tiempo_esperado" value="8">
+                    </div>
+                    <div class="input-group">
+                        <label>Coste Hora Soporte (€)</label>
+                        <input type="number" id="coste_hora" value="22">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cálculos -->
+        <section id="calculos">
+            <h2>Resultados Operativos</h2>
+            <div class="card">
+                <div class="grid-results">
+                    <div class="result-box">
+                        <span class="value" id="res_total_consultas">0</span>
+                        <span class="label">Consultas Mensuales</span>
+                    </div>
+                    <div class="result-box">
+                        <span class="value" id="res_total_tokens">0M</span>
+                        <span class="label">Tokens Totales</span>
+                    </div>
+                    <div class="result-box">
+                        <span class="value" id="res_ahorro_horas">0h</span>
+                        <span class="label">Ahorro Tiempo Mensual</span>
+                    </div>
+                    <div class="result-box">
+                        <span class="value" id="res_ahorro_economico">0€</span>
+                        <span class="label">Ahorro Humano Bruto</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Matriz Comparativa -->
+        <section id="matriz">
+            <h2>Matriz Comparativa</h2>
+            <div class="card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Criterio</th>
+                            <th>Opción A: API Externa</th>
+                            <th>Opción B: Cloud Gestionado</th>
+                        </tr>
+                    </thead>
+                    <tbody id="matriz-body">
+                        <!-- Se rellena por JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Mini-RAID -->
+        <section id="raid">
+            <h2>Mini-RAID</h2>
+            <div class="card">
+                <p style="margin-bottom: 1rem; color: var(--text-muted);">Identifique Riesgos, Supuestos, Incidencias y Dependencias.</p>
+                <div id="raid-container">
+                    <!-- Filas RAID -->
+                </div>
+                <button class="btn btn-primary" id="add-raid">Añadir Fila</button>
+            </div>
+        </section>
+
+        <!-- Decisión Final -->
+        <section id="decision">
+            <h2>Decisión Final</h2>
+            <div class="card">
+                <div class="input-group">
+                    <label>Alternativa Seleccionada</label>
+                    <select id="select-alternativa">
+                        <option value="A">Opción A: API Externa</option>
+                        <option value="B">Opción B: Plataforma Cloud Gestionada</option>
+                    </select>
+                </div>
+                <div class="input-group" style="margin-top: 1.5rem;">
+                    <label>Argumentación Principal (Técnica y Económica)</label>
+                    <textarea id="argumento-final" rows="6" placeholder="Escriba su justificación aquí..."></textarea>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exportar -->
+        <section id="exportar">
+            <h2>Resumen para Entrega</h2>
+            <div class="card">
+                <p>Copie el siguiente bloque para su informe individual:</p>
+                <textarea id="resumen-final" rows="15" readonly style="width: 100%; margin-top: 1rem; font-family: monospace; font-size: 0.85rem;"></textarea>
+                <button class="btn btn-primary" id="btn-copy" style="margin-top: 1rem;">Copiar al Portapapeles</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
